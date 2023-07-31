@@ -5,6 +5,7 @@ import { DatabaseModule } from './database.module';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ConfigValidator } from './validator/config.validator';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { ConfigValidator } from './validator/config.validator';
     }),
     DatabaseModule,
     AuthModule,
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],

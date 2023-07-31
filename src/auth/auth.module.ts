@@ -6,6 +6,9 @@ import { AccessStrategy } from './strategies/access.strategy';
 import { RefreshStrategy } from './strategies/refresh.strategy';
 import { CacheModule } from '@nestjs/cache-manager';
 import { ConfigService } from '@nestjs/config';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { User } from 'src/user/entities/user.entity';
+import { GoogleStrategy } from './strategies/google.strategy';
 
 @Module({
   imports: [
@@ -19,8 +22,9 @@ import { ConfigService } from '@nestjs/config';
       }),
     }),
     CacheModule.register(),
+    TypeOrmModule.forFeature([User]),
   ],
   controllers: [AuthController],
-  providers: [AuthService, AccessStrategy, RefreshStrategy],
+  providers: [AuthService, AccessStrategy, RefreshStrategy, GoogleStrategy],
 })
 export class AuthModule {}
